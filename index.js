@@ -22,8 +22,19 @@ function reversePassword(password){
     return reversedPassword;
 }
 
+function storePassword(name, p1, p2){ // function to store the password to an object and to print different prompts depending on the error
+    if(!validatePassword(p1, p2)){
+        return { name: name, newpassword: p1 }; // returns the value of newpassword same as the first given password
+    } else {
+        const reversedPassword = reversePassword(p1); 
+        return { name: name, newpassword: reversedPassword }; // returns an object containing name and new passwords
+    }
+}
 // sample output
-// console.log(storePassword("John", "Pass1234", "Pass1234")); // returns {name: "John", newpassword: "4321ssaP"}
-// console.log(storePassword("John", "Pass123", "Pass12345")); // returns {name: "John", newpassword: "Pass123"}
-console.log(validatePassword("Hello1234", "Hello1234"));
-console.log(validatePassword("HELLO1234", "HELLO1234"));
+console.log(storePassword("John", "Pass1234", "Pass1234")); // returns {name: "John", newpassword: "4321ssaP"}
+console.log(storePassword("John", "Pass123", "Pass12345")); // returns {name: "John", newpassword: "Pass123"}
+// console.log(storePassword("John", "pass1234", "pass1234")); 
+// console.log(storePassword("John", "pass1234", "pass1234567")); 
+// console.log(storePassword("John", "pass1", "pass1"));
+// console.log(validatePassword("Hello1234", "Hello1234"));
+// console.log(validatePassword("HELLO1234", "HELLO1234"));
